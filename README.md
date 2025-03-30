@@ -9,11 +9,11 @@ You can treat this project as a template for your own project. You can use the s
 - Install [IntelliJ IDEA](https://www.jetbrains.com/idea/download/)
   - You can use the Community edition, but the Ultimate edition is recommended. You can use your student license for it.
 - Install [Java 21] https://adoptium.net/temurin/releases/
-  - Another option: https://sdkman.io/. Sdkman is a tool for managing parallel versions of multiple Software Development Kits on most Unix-based systems. It’s a great way to install Java and other SDKs.
+  - Another option: https://sdkman.io/. Sdkman is a tool for managing parallel versions of multiple Software Development Kits on most Unix-based systems. Refer to this page for installation instructions: https://sdkman.io/usage/
 - Install [Gradle] (*Optional*) https://gradle.org/install/
   - You can use Sdkman to install Gradle as well.
 - Install [MySQL] https://dev.mysql.com/downloads/mysql/
-  - or using Docker: `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root -p 3306:3306 -d mysql:latest`
+  - or using Docker: `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root MYSQL_DATABASE=<database_name_of_your_choice> -p 3306:3306 -d mysql:lts`
 
 ### 1.2. Clone and open the project
 
@@ -54,4 +54,7 @@ Open the following URL in your browser:
 ```
 http://localhost:8080
 ```
+
+# Database Schema
+![img.png](images/schema.png)
 

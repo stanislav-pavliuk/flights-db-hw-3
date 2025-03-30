@@ -39,6 +39,7 @@ public class Flight {
     private String    airlineCode;
     @Column("aircraft_number")
     private String    aircraftNumber;
+
     @MappedCollection(idColumn = "flight_id")
     private Set<LoadedMeal> loadedMeals;
     @MappedCollection(idColumn = "flight_id")
@@ -50,7 +51,7 @@ public class Flight {
     @NoArgsConstructor
     public static class LoadedMeal {
         private String mealType;
-        private long quantity;
+        private Long quantity;
     }
 
     @Data
@@ -59,8 +60,8 @@ public class Flight {
     @NoArgsConstructor
     public static class LoadedBeverage {
         private String beverageType;
-        private long quantity;
-        private long servingsQuantity;
+        private Long quantity;
+        private Long servingsQuantity;
     }
 
     public Duration getFlightDuration() {

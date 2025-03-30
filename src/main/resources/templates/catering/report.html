@@ -84,13 +84,13 @@
             <thead class="table-light">
             <tr>
                 <th>Meal Type</th>
-                <th>Total Quantity</th>
+                <th>Unused (In Units)</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="meal : ${unusedMeals}">
                 <td th:text="${meal.name}"></td>
-                <td th:text="${meal.quantity}"></td>
+                <td th:text="${meal.unusedUnits}"></td>
             </tr>
             </tbody>
         </table>
@@ -103,13 +103,13 @@
             <thead class="table-light">
             <tr>
                 <th>Beverage Type</th>
-                <th>Quantity</th>
+                <th>Unused (In Units)</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="beverage : ${unusedBeverages}">
                 <td th:text="${beverage.name}"></td>
-                <td th:text="${beverage.quantity}"></td>
+                <td th:text="${beverage.unusedUnits}"></td>
             </tr>
             </tbody>
         </table>

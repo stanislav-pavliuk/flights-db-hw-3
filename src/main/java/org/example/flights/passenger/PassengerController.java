@@ -70,10 +70,6 @@ public class PassengerController {
         var passenger = passengerRepository.findById(ticketNo).orElseThrow(
                 () -> new IllegalArgumentException("Invalid ticket number:" + ticketNo));
 
-        if (!passenger.getMealsToBeServed().isEmpty() || !passenger.getBeveragesToBeServed().isEmpty()) {
-            throw new IllegalStateException("Cannot change preordered meals when meals or beverages are loaded.");
-        }
-
         var mealType = mealTypeRepository.findById(preorderedMealType)
                 .map(it -> Set.of(new PassengerMealType.Preordered(it.type())))
                 .orElseGet(Set::of);

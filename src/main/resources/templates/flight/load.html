@@ -22,7 +22,7 @@
       </thead>
       <tbody>
       <tr th:each="meal : ${mealsToLoad}">
-        <td th:text="${meal.item}"></td>
+        <td th:text="${meal.mealType}"></td>
         <td th:text="${meal.quantity}"></td>
       </tr>
       </tbody>
@@ -39,7 +39,7 @@
       </thead>
       <tbody>
       <tr th:each="meal : ${beveragesToLoad}">
-        <td th:text="${meal.item}"></td>
+        <td th:text="${meal.beverageType}"></td>
         <td th:text="${meal.quantity}"></td>
       </tr>
       </tbody>

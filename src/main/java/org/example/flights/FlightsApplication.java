@@ -11,9 +11,4 @@ public class FlightsApplication {
         SpringApplication.run(FlightsApplication.class, args);
     }
 
-    @GetMapping
-    public String homepage() {
-        return "index";
-    }
-
 }

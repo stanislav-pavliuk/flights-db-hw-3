@@ -11,7 +11,6 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.List;
 import java.util.Set;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 
 @Data
@@ -45,7 +44,7 @@ public class Passenger {
     private Set<PassengerMealType.Preordered> preorderedMeals;
 
     @MappedCollection(idColumn = "ticket_no")
-    private Set<PassengerBeverage.Preordered> passengerBeverages;
+    private Set<PassengerBeverage.Preordered> preorderedBeverages;
 
     @MappedCollection(idColumn = "ticket_no")
     private Set<PassengerMealType.ToBeServed> mealsToBeServed;
@@ -67,7 +66,7 @@ public class Passenger {
     }
 
     public String formatPreorderedBeverages() {
-        return formatBeverages(List.copyOf(passengerBeverages));
+        return formatBeverages(List.copyOf(preorderedBeverages));
     }
 
     private String formatMeals(List<PassengerMealType> meals) {

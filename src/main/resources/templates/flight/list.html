@@ -9,20 +9,20 @@
 </head>
 <body>
 
-<div class="container px-10">
-    <div class="row show-grid">
+<div class="container px-10 show-grid">
+    <div class="row">
         <h1 class="text-center">Flights</h1>
     </div>
 
     <div class="row">
         <div class="col">
-            <a href="/flight/new" class="btn btn-primary">Add New Flight</a>
+            <a href="/flight/new" class="btn btn-primary my-2">Add New Flight</a>
         </div>
     </div>
 
     <div class="row">
         <div class="col">
-            <table class="table">
+            <table class="table align-middle">
                 <thead>
                 <tr>
                     <th scope="col">Flight Number</th>
@@ -51,12 +51,14 @@
                     <td th:text="${flight.airlineCode}">Airline Code</td>
                     <td th:text="${flight.aircraftNumber}">Aircraft Number</td>
                     <td>
-                        <a th:href="@{'/flight/' + ${flight.id} + '/passenger'}" class="btn btn-primary">Passengers ></a>
-                        <a th:href="@{'/flight/' + ${flight.id} + '/catering/report'}" class="btn btn-secondary">Catering Report ></a>
+                        <a th:href="@{'/flight/' + ${flight.id} + '/passenger'}" class="btn btn-secondary m-1">Passengers ></a>
+                        <a th:href="@{'/flight/' + ${flight.id} + '/catering/report'}" class="btn btn-primary m-1">Catering Report ></a>
+                        <a th:href="@{'/flight/' + ${flight.id} + '/meals/load'}" class="btn btn-primary m-1">Load Meals ></a>
                     </td>
                 </tr>
                 </tbody>
             </table>
+
         </div>
 
 

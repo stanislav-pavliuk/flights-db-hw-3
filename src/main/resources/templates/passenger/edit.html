@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html th:replace="~{common/layout :: layout(~{::title}, ~{::header}, ~{::section})}" lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="@{'Edit Passenger: ' + ${passenger.ticketNo}}"></title>
+</head>
+<body>
+
+<div class="container px-10">
+    <header th:text="@{'Edit Passenger: ' + ${passenger.ticketNo}}"></header>
+
+    <section>
+        <div class="row">
+            <h3 class="mb-4">Passenger Details</h3>
+            <div class="col">
+                <p><strong>Ticket Number:</strong> <span th:text="${passenger.ticketNo}"></span></p>
+                <p><strong>Flight ID:</strong> <span th:text="${passenger.flightId}"></span></p>
+                <p><strong>Full Name:</strong> <span th:text="${passenger.fullName}"></span></p>
+                <p><strong>Flight Class:</strong> <span th:text="${passenger.flightClass}"></span></p>
+                <p><strong>Seat Row:</strong> <span th:text="${passenger.seatRow}"></span></p>
+            </div>
+            <div class="col">
+                <p><strong>Seat Letter:</strong> <span th:text="${passenger.seatLetter}"></span></p>
+                <p><strong>Credit Card Number:</strong> <span th:text="${passenger.creditCardNo}"></span></p>
+                <p><strong>Preordered Meals:</strong> <span th:text="${passenger.formatPreorderedMeals()}"/></p>
+                <p><strong>Preordered Beverages:</strong> <span th:text="${passenger.formatPreorderedBeverages()}"/></p>
+            </div>
+        </div>
+
+        <hr/>
+
+        <form th:action="@{'/passenger/' + ${passenger.ticketNo} + '/update'}" method="post">
+            <div class="mb-3">
+                <label for="mealType">Select Meal:</label>
+                <select id="mealType" name="preorderedMealType" class="form-select form-select-sm">
+                    <option value="-" selected>-</option>
+                    <option th:each="meal : ${mealTypes}"
+                            th:value="${meal.type}"
+                            th:text="${meal.type}">
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="beverageTypeH">Select Beverage:</label>
+                <select id="beverageTypeH" name="preorderedBeverageType" class="form-select form-select-sm">
+                    <option value="-" selected>-</option>
+                    <option th:each="beverage : ${beverageTypesH}"
+                            th:value="${beverage.type}"
+                            th:text="${beverage.type}">
+                    </option>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="beverageTypeC">Select Beverage:</label>
+                <select id="beverageTypeC" name="preorderedBeverageType" class="form-select form-select-sm">
+                    <option value="-">-</option>
+                    <option th:each="beverage : ${beverageTypesC}"
+                            th:value="${beverage.type}"
+                            th:text="${beverage.type}">
+                    </option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </section>
+
+</div>
+</body>
+</html>

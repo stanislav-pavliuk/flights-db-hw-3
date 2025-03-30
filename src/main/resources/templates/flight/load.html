@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html th:replace="~{common/layout :: layout(~{::title}, ~{::header}, ~{::section})}" lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title th:text="@{'Flight Load Report: ' + ${flight.getNo()} + ', Departure Date: ' + ${flight.departureDate}}"></title>
+</head>
+<body>
+
+<div class="container px-10">
+  <header th:text="@{'Flight Load Report: ' + ${flight.getNo()} + ', Departure Date: ' + ${flight.departureDate}}"></header>
+
+  <section>
+    <h3 class="mb-4">Meals to load</h3>
+
+    <table class="table table-bordered">
+      <thead class="table-light">
+        <tr>
+          <th>Meal Type</th>
+          <th>Items count</th>
+        </tr>
+      </thead>
+      <tbody>
+      <tr th:each="meal : ${mealsToLoad}">
+        <td th:text="${meal.item}"></td>
+        <td th:text="${meal.quantity}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3 class="mb-4">Beverages To Load</h3>
+
+    <table class="table table-bordered">
+      <thead class="table-light">
+      <tr>
+        <th>Meal Type</th>
+        <th>Items count</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="meal : ${beveragesToLoad}">
+        <td th:text="${meal.item}"></td>
+        <td th:text="${meal.quantity}"></td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div class="row">
+      <div class="col">
+        <a th:href="@{'/flight/' + ${flight.id} + '/meals/load/confirm'}" class="btn btn-primary">Confirm Load</a>
+      </div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

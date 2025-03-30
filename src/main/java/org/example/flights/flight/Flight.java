@@ -1,7 +1,6 @@
 package org.example.flights.flight;
 
 import lombok.*;
-import lombok.experimental.Accessors;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.MappedCollection;
@@ -47,17 +46,21 @@ public class Flight {
 
     @Data
     @Table("loaded_meals")
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class LoadedMeal {
         private String mealType;
-        private Integer quantity;
+        private long quantity;
     }
 
     @Data
     @Table("loaded_beverages")
+    @AllArgsConstructor
+    @NoArgsConstructor
     public static class LoadedBeverage {
         private String beverageType;
-        private Integer quantity;
-        private Integer servingsQuantity;
+        private long quantity;
+        private long servingsQuantity;
     }
 
     public Duration getFlightDuration() {

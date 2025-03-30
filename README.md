@@ -63,19 +63,26 @@ http://localhost:8080
 You can evaluate all the dependencies in the `build.gradle` file:
 
 ```groovy
+// Spring Boot starters for interaction with the database
 implementation 'org.springframework.boot:spring-boot-starter-jdbc'
-implementation 'org.springframework.boot:spring-boot-starter-web'
-implementation 'org.liquibase:liquibase-core'
-implementation 'org.springframework.boot:spring-boot-configuration-processor'
-
-compileOnly 'org.projectlombok:lombok:1.18.36'
-annotationProcessor 'org.projectlombok:lombok:1.18.36'
-
-implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
-implementation 'org.springframework.boot:spring-boot-starter-actuator'
-developmentOnly 'org.springframework.boot:spring-boot-devtools'
 runtimeOnly 'com.mysql:mysql-connector-j'
+
+// Database migration tool Liquibase
+implementation 'org.liquibase:liquibase-core'
+
+// Spring Boot starters for web application
+implementation 'org.springframework.boot:spring-boot-starter-web'
+implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+// Spring Boot starters for development and testing
+developmentOnly 'org.springframework.boot:spring-boot-devtools'
 testImplementation 'org.springframework.boot:spring-boot-starter-test'
 testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+// Other peculiar dependencies. Project Lombok greatly reduces the amount of boilerplate code
+compileOnly 'org.projectlombok:lombok:1.18.36'
+annotationProcessor 'org.projectlombok:lombok:1.18.36'
+implementation 'org.springframework.boot:spring-boot-configuration-processor'
+implementation 'org.springframework.boot:spring-boot-starter-actuator'
 ```

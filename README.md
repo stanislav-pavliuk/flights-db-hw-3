@@ -11,7 +11,7 @@ You can treat this project as a template for your own project. You can use the s
 - Install [Java 21] https://adoptium.net/temurin/releases/
   - Another option: https://sdkman.io/. Sdkman is a tool for managing parallel versions of multiple Software Development Kits on most Unix-based systems. Refer to this page for installation instructions: https://sdkman.io/usage/
 - Install [Gradle] (*Optional*) https://gradle.org/install/
-  - You can use Sdkman to install Gradle as well.
+  - You can use Sdkman to install Gradle as well. Gradle is a build automation tool that is used to automate the building, testing, publishing, and deployment of software packages.
 - Install [MySQL] https://dev.mysql.com/downloads/mysql/
   - or using Docker: `docker run --name mysql -e MYSQL_ROOT_PASSWORD=root MYSQL_DATABASE=<database_name_of_your_choice> -p 3306:3306 -d mysql:lts`
 

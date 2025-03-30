@@ -1,10 +1,4 @@
-DROP DATABASE IF EXISTS inflight_catering_service;
 
-CREATE DATABASE IF NOT EXISTS inflight_catering_service CHARACTER SET 'utf8mb4' COLLATE 'utf8mb4_unicode_ci';
-
-USE inflight_catering_service;
-
-DROP TABLE IF EXISTS airport;
 CREATE TABLE airport
 (
     airport_code CHAR(3)      NOT NULL PRIMARY KEY COMMENT 'Airport Code: primary key inline declaration.',
@@ -12,7 +6,7 @@ CREATE TABLE airport
 ) ENGINE = innodb COMMENT = 'Airport entity type.';
 
 
-DROP TABLE IF EXISTS airline;
+
 CREATE TABLE airline
 (
     code CHAR(2) COMMENT 'Airline Code.',
@@ -21,7 +15,7 @@ CREATE TABLE airline
     CONSTRAINT pk_airline PRIMARY KEY (code)
 );
 
-DROP TABLE IF EXISTS aircraft_type;
+
 CREATE TABLE aircraft_type
 (
     type_designator CHAR(4) COMMENT 'The ICAO (International Civil Aviation Organization) assigns 4-character codes to identify aircraft types.',
@@ -30,7 +24,7 @@ CREATE TABLE aircraft_type
     CONSTRAINT pk_aircraft_code PRIMARY KEY (type_designator)
 );
 
-DROP TABLE IF EXISTS aircraft;
+
 CREATE TABLE aircraft
 (
     airline_code  CHAR(2),
@@ -48,7 +42,7 @@ CREATE TABLE aircraft
 
 );
 
-DROP TABLE IF EXISTS meal_type;
+
 CREATE TABLE meal_type
 (
     type VARCHAR(40) NOT NULL COMMENT 'Type of the meal type',
@@ -56,7 +50,7 @@ CREATE TABLE meal_type
     CONSTRAINT pk_meal_type PRIMARY KEY (type)
 ) COMMENT 'Meal Type - reference table.';
 
-DROP TABLE IF EXISTS meal;
+
 CREATE TABLE meal
 (
     id   BIGINT AUTO_INCREMENT,
@@ -69,7 +63,7 @@ CREATE TABLE meal
         FOREIGN KEY (type) REFERENCES meal_type (type) ON DELETE RESTRICT ON UPDATE CASCADE
 ) COMMENT 'Reference table of all.';
 
-DROP TABLE IF EXISTS beverage_type;
+
 CREATE TABLE beverage_type
 (
     type  VARCHAR(40)    NOT NULL COMMENT 'Beverage type.',
@@ -78,7 +72,7 @@ CREATE TABLE beverage_type
     CONSTRAINT pk_beverage_type PRIMARY KEY (type)
 ) COMMENT 'Beverage Type - reference table.';
 
-DROP TABLE IF EXISTS beverage;
+
 CREATE TABLE beverage
 (
     id          BIGINT AUTO_INCREMENT,
@@ -93,14 +87,14 @@ CREATE TABLE beverage
         FOREIGN KEY (type) REFERENCES beverage_type (type) ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
-DROP TABLE IF EXISTS flight;
+
 CREATE TABLE flight
 (
     id                BIGINT AUTO_INCREMENT COMMENT 'Surrogate key for the flight entity.',
     no                VARCHAR(10) COMMENT 'Flight number (Part of PK), Example: AA335',
 
     departure_date    DATE        NOT NULL COMMENT 'Departure Date (Part of PK)',
-    dep_time          TIME        NOT NULL COMMENT 'Departure time',
+    departure_time          TIME        NOT NULL COMMENT 'Departure time',
 
     check_in_time     TIME        NOT NULL COMMENT 'Check-in time',
 
@@ -134,7 +128,7 @@ CREATE TABLE flight
         UNIQUE (no, departure_date) COMMENT 'Unique constraint to ensure no duplicate flight records.'
 ) ENGINE = innodb COMMENT = 'Flight entity type.';
 
-DROP TABLE IF EXISTS loaded_meals;
+
 CREATE TABLE loaded_meals
 /* LoadedMeals ET. Source: Catering & Galley Loading Plan */
 (
@@ -151,7 +145,7 @@ CREATE TABLE loaded_meals
         FOREIGN KEY (meal_type) REFERENCES meal_type (type) ON DELETE CASCADE ON UPDATE CASCADE
 ) COMMENT 'LoadedMeals ET. Source: Catering & Galley Loading Plan';
 
-DROP TABLE IF EXISTS loaded_beverages;
+
 CREATE TABLE loaded_beverages
 (
     beverage_type     VARCHAR(40) NOT NULL,
@@ -169,7 +163,7 @@ CREATE TABLE loaded_beverages
 ) COMMENT 'LoadedBeverages ET. Source: Catering & Galley Loading Plan';
 
 
-DROP TABLE IF EXISTS passenger;
+
 CREATE TABLE passenger
 /* Passenger ET. Source: Passenger & Cargo Manifest */
 (

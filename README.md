@@ -86,3 +86,41 @@ annotationProcessor 'org.projectlombok:lombok:1.18.36'
 implementation 'org.springframework.boot:spring-boot-configuration-processor'
 implementation 'org.springframework.boot:spring-boot-starter-actuator'
 ```
+
+# Useful links
+
+While you may use this project as a reference, you may also want to check out some of the following resources to get a better understanding of the technologies/libraries used there. *Some of the links are already included in [HELP.md](HELP.md).*
+
+Couple of notes before:
+
+*After watching some of these resources you might be tempted to use Spring Data JPA. However, since, the whole point of the course is to study databases, please stick to the Spring Data JDBC. You may choose to use: JdbcClient, JdbcTemplate or @Query annotation to specify your queries. It's still pretty high-level API, but it will force you to interact with your DBMS little bit more.*
+
+*Using Liquibase is optional, however, database migrations are a good practice in industry. You can use it to create your database schema and populate it with some initial data.*
+
+## Videos
+
+* [Spring Boot with Thymeleaf] (https://www.youtube.com/watch?v=KTBWCJPKiqk)
+* [Spring Data JDBC] (https://www.youtube.com/playlist?list=PLogZqOaRQiHk0gtuAbp2j31QYqoXBIU5m)
+  * [Another one on using JDBC template] (https://www.youtube.com/watch?v=TUOwlaqZ0eo). *Josh Long is a great guy, so follow him if you're interested with the development in Java/Spring*
+* [Liquibase with Spring Boot] (https://www.youtube.com/watch?v=cc_QpEA97xE)
+  * [Liquibase] (https://www.youtube.com/watch?v=YhicwD489xQ)
+
+It'll should be enough to get you started with the project.
+
+## Docs
+
+
+Spring-related projects are usually brilliantly documented. You can find the documentation for the Spring Boot framework here: [Spring Boot Documentation] (https://docs.spring.io/spring-boot/docs/current/reference/html/)
+
+* [Spring Boot Reference Documentation] (https://docs.spring.io/spring-boot/docs/current/reference/html/)
+* [Spring Data JDBC Reference Documentation] (https://docs.spring.io/spring-data/jdbc/docs/current/reference/html/)
+* [Thymeleaf Documentation] (https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html)
+* [Liquibase Documentation] (https://www.liquibase.org/get-started/quickstart)
+* [Lombok Documentation] (https://projectlombok.org/features/all)
+
+You can also check this ([Spring PetClinic] (https://github.com/spring-projects/spring-petclinic)) project as a great reference project for Spring Boot application development.
+
+---
+
+Enjoy coding!
+

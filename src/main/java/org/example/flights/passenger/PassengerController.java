@@ -2,18 +2,22 @@ package org.example.flights.passenger;
 
 import org.example.flights.beverage.Beverage;
 import org.example.flights.beverage.BeverageTypeRepository;
+import org.example.flights.flight.FlightRepository;
 import org.example.flights.meal.MealRepository;
 import org.example.flights.meal.MealTypeRepository;
 import org.example.flights.passenger.preorder.PassengerBeverage;
 import org.example.flights.passenger.preorder.PassengerMealType;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.BindParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,13 +29,15 @@ public class PassengerController {
     private final PassengerRepository    passengerRepository;
     private final MealTypeRepository     mealTypeRepository;
     private final BeverageTypeRepository beverageTypeRepository;
+    private final FlightRepository flightRepository;
 
     public PassengerController(final PassengerRepository passengerRepository, final MealRepository mealRepository,
                                final MealTypeRepository mealTypeRepository,
-                               final BeverageTypeRepository beverageTypeRepository) {
+                               final BeverageTypeRepository beverageTypeRepository, final FlightRepository flightRepository) {
         this.passengerRepository = passengerRepository;
         this.mealTypeRepository = mealTypeRepository;
         this.beverageTypeRepository = beverageTypeRepository;
+        this.flightRepository = flightRepository;
     }
 
     @GetMapping("/flight/{flightId}/passenger")
@@ -39,6 +45,7 @@ public class PassengerController {
         var passengers = passengerRepository.findAllByFlightId(flightId);
 
         model.addAttribute("passengers", passengers);
+        model.addAttribute("flightId", flightId);
 
         return "passenger/list";
     }
@@ -78,7 +85,6 @@ public class PassengerController {
                 .map(beverageTypeRepository::findById)
                 .flatMap(Optional::stream)
                 .map(it -> new PassengerBeverage.Preordered(it.type()))
-                .peek(it -> System.out.println("Preordered beverage: " + it))
                 .collect(Collectors.toSet());
 
         passenger.setPreorderedBeverages(beverages);
@@ -87,5 +93,16 @@ public class PassengerController {
 
 
         return "redirect:/flight/" + passenger.getFlightId() + "/passenger";
+    }
+
+    @GetMapping("/flight/{flightId}/passenger/create")
+    public String createPassengerPage(@PathVariable Long flightId, Model model) {
+        var flight = flightRepository.findById(flightId)
+                .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Flight not found."));
+
+        model.addAttribute("flight", flight);
+        model.addAttribute("seatLetters", List.of("A", "B", "C", "D", "E", "F"));
+
+        return "passenger/create";
     }
 }

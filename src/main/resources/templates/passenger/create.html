@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html th:replace="~{common/layout :: layout(~{::title}, ~{::header}, ~{::section})}" lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="@{'Create passenger for : ' + ${flight.no}}"></title>
+</head>
+<body>
+
+<div class="container px-10">
+    <header th:text="@{'Create passenger for: ' + ${flight.no}}"></header>
+
+    <section>
+        <form th:action="@{'/flight/' + ${flight.no} + '/passenger/create'}" method="post">
+
+            <div class="mb-3">
+                <input type="hidden" th:value="${flight.id}" id="flightId"/>
+            </div>
+            <div class="mb-3">
+                <label for="ticketNo" class="form-label">Ticket Number</label>
+                <input type="text" class="form-control" id="ticketNo" name="ticketNo" readonly>
+            </div>
+            <div class="mb-3">
+                <label for="passengerName" class="form-label">Passenger Name</label>
+                <input type="text" class="form-control" id="passengerName" name="fullName" required>
+            </div>
+            <div class="mb-3">
+                <label for="seatRow" class="form-label">Seat Row</label>
+                <input type="number" class="form-control" id="seatRow" name="seatRow" required>
+            </div>
+            <div class="mb-3">
+                <label for="seatLetter" class="form-label">Seat Letter</label>
+                <select id="seatLetter" name="seatLetter" class="form-select form-select-sm">
+                    <option th:each="seatLetter : ${seatLetters}"
+                            th:value="${seatLetter}"
+                            th:text="${seatLetter}"/>
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="creditCardNo" class="form-label">Credit Card No</label>
+                <input type="text" class="form-control" id="creditCardNo" name="creditCardNo" required/>
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </section>
+
+</div>
+</body>
+</html>

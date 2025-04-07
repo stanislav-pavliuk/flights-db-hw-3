@@ -13,6 +13,7 @@
     <div class="row">
         <div class="col">
             <a href="/flight" class="btn btn-primary my-2">< All Flights</a>
+            <a th:href="@{'/flight/' + ${flightId} + '/passenger/create'}" class="btn btn-primary my-2">Create Passenger</a>
         </div>
     </div>
 
